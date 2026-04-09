@@ -12,13 +12,17 @@ struct ProfileView: View {
       .navigationTitle("Profile")
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
-          Button {
-            showSettingsView = true
-          } label: {
-            Label("Settings", systemImage: "gear")
-          }
+          settingsButton
         }
       }
+  }
+
+  private var settingsButton: some View {
+    Button {
+      showSettingsView = true
+    } label: {
+      Label("Settings", systemImage: "gear")
+    }
   }
 }
 
