@@ -4,26 +4,46 @@
 
 import SwiftUI
 
-struct AppView: View {
-  @State private var showTabBar: Bool = false
+struct AppViewBuilder<TabbarView: View, OnboardingView: View>: View {
+  var showTabBar: Bool = false
+
+  @ViewBuilder var tabBarView: TabbarView
+  @ViewBuilder var onboardingView: OnboardingView
 
   var body: some View {
     ZStack {
       if showTabBar {
+        tabBarView
+          .transition(.move(edge: .trailing))
+      } else {
+        onboardingView
+          .transition(.move(edge: .leading))
+      }
+    }
+    .animation(.smooth, value: showTabBar)
+  }
+}
+
+struct AppView: View {
+  @State private var showTabBar: Bool = false
+
+  var body: some View {
+    AppViewBuilder(
+      showTabBar: showTabBar,
+      tabBarView: {
         ZStack {
           Color.red.ignoresSafeArea()
           Text("TabBar")
         }
-        .transition(.move(edge: .trailing))
-      } else {
+      },
+      onboardingView: {
         ZStack {
           Color.blue.ignoresSafeArea()
           Text("Onboarding")
         }
-        .transition(.move(edge: .leading))
+
       }
-    }
-    .animation(.smooth, value: showTabBar)
+    )
     .onTapGesture {
       showTabBar.toggle()
     }
