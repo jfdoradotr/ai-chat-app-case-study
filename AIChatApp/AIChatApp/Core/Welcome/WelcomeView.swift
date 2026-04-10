@@ -13,15 +13,25 @@ struct WelcomeView: View {
         .ignoresSafeArea()
 
       VStack {
-        Text("Welcome!")
-          .frame(maxHeight: .infinity)
+        VStack {
+          Text("AI Chat 🤖")
+            .font(.title)
+            .bold()
+          Text("SwiftyJourney.com")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+          NavigationLink {
+            OnboardingCompletedView()
+          } label: {
+            Text("Get Started")
+          }
+          .buttonStyle(.primary)
+          Button("Already have an account? Sign in.") {
 
-        NavigationLink {
-          OnboardingCompletedView()
-        } label: {
-          Text("Get Started")
+          }
+          Text("Terms of Service • Privacy Policy")
         }
-        .buttonStyle(.primary)
+        .frame(maxHeight: .infinity)
       }
       .padding(16)
     }
