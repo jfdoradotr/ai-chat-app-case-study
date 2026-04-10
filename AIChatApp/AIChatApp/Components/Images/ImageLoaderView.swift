@@ -10,7 +10,7 @@ struct ImageLoaderView: View {
   private let resizingMode: ContentMode
 
   init(
-    url: URL? = URL(string: "https://picsum.photos/600/600"),
+    url: URL? = Constants.randomImage,
     resizingMode: ContentMode = .fill
   ) {
     self.url = url
@@ -18,10 +18,16 @@ struct ImageLoaderView: View {
   }
 
   var body: some View {
-    WebImage(url: url)
-      .resizable()
-      .indicator(.activity)
-      .aspectRatio(contentMode: resizingMode)
+    Rectangle()
+      .opacity(0)
+      .overlay(
+        WebImage(url: url)
+          .resizable()
+          .indicator(.activity)
+          .aspectRatio(contentMode: resizingMode)
+          .allowsHitTesting(false)
+      )
+      .clipped()
   }
 }
 
