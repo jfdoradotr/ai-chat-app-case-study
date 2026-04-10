@@ -14,13 +14,8 @@ struct WelcomeView: View {
         Text("Onboarding Completed")
       } label: {
         Text("Get Started")
-          .font(.headline)
-          .foregroundStyle(.white)
-          .frame(maxWidth: .infinity)
-          .frame(height: 55)
-          .background(.accent)
-          .clipShape(.rect(cornerRadius: 16))
       }
+      .buttonStyle(.primary)
     }
     .padding(16)
   }
