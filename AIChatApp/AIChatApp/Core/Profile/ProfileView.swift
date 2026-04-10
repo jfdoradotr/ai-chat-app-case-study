@@ -15,14 +15,19 @@ struct ProfileView: View {
           settingsButton
         }
       }
+      .sheet(isPresented: $showSettingsView) {
+        Text("Settings")
+      }
   }
 
   private var settingsButton: some View {
-    Button {
-      showSettingsView = true
-    } label: {
+    Button.init(action: onSettingsButtonPressed) {
       Label("Settings", systemImage: "gear")
     }
+  }
+
+  private func onSettingsButtonPressed() {
+    showSettingsView = true
   }
 }
 
