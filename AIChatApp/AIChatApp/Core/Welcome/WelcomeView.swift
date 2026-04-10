@@ -7,17 +7,23 @@ import SwiftUI
 struct WelcomeView: View {
   var body: some View {
     VStack {
-      Text("Welcome!")
-        .frame(maxHeight: .infinity)
+      ImageLoaderView(url: URL(string: "https://picsum.photos/600/600"))
+      .allowsHitTesting(false)
+      .ignoresSafeArea()
 
-      NavigationLink {
-        OnboardingCompletedView()
-      } label: {
-        Text("Get Started")
+      VStack {
+        Text("Welcome!")
+          .frame(maxHeight: .infinity)
+
+        NavigationLink {
+          OnboardingCompletedView()
+        } label: {
+          Text("Get Started")
+        }
+        .buttonStyle(.primary)
       }
-      .buttonStyle(.primary)
+      .padding(16)
     }
-    .padding(16)
   }
 }
 
