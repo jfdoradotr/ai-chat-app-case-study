@@ -14,9 +14,8 @@ struct AppView: View {
         TabBarView()
       },
       onboardingView: {
-        ZStack {
-          Color.blue.ignoresSafeArea()
-          Text("Onboarding")
+        NavigationStack {
+          WelcomeView()
         }
       }
     )
