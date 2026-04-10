@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A9F8207F2F89302D00A0F221 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9F8207E2F89302D00A0F221 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A9494A612F872A1F0082C3B6 /* AIChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F8207F2F89302D00A0F221 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			);
 			name = AIChatApp;
 			packageProductDependencies = (
+				A9F8207E2F89302D00A0F221 /* SDWebImageSwiftUI */,
 			);
 			productName = AIChatApp;
 			productReference = A9494A612F872A1F0082C3B6 /* AIChatApp.app */;
@@ -97,6 +103,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				A923A3E52F872EDB00375A1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				A9F8207D2F89302D00A0F221 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A9494A622F872A1F0082C3B6 /* Products */;
@@ -378,6 +385,14 @@
 				version = 0.63.2;
 			};
 		};
+		A9F8207D2F89302D00A0F221 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = exactVersion;
+				version = 3.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -385,6 +400,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A923A3E52F872EDB00375A1F /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		A9F8207E2F89302D00A0F221 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9F8207D2F89302D00A0F221 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
