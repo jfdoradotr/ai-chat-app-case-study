@@ -16,12 +16,14 @@ struct ProfileView: View {
         }
       }
       .sheet(isPresented: $showSettingsView) {
-        Text("Settings")
+        NavigationStack {
+          SettingsView()
+        }
       }
   }
 
   private var settingsButton: some View {
-    Button.init(action: onSettingsButtonPressed) {
+    Button(action: onSettingsButtonPressed) {
       Label("Settings", systemImage: "gear")
     }
   }
