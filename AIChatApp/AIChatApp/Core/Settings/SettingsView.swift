@@ -6,6 +6,7 @@ import SwiftUI
 
 struct SettingsView: View {
   @Environment(AppState.self) private var appState
+  @Environment(\.dismiss) private var dismiss
 
   var body: some View {
     List {
@@ -15,7 +16,14 @@ struct SettingsView: View {
   }
 
   private func onSignOutPressed() {
-    appState.updateViewState(showTabBarView: false)
+    dismiss()
+
+    Task {
+      try? await Task.sleep(for: .seconds(0.3))
+      await MainActor.run {
+        appState.updateViewState(showTabBarView: false)
+      }
+    }
   }
 }
 
