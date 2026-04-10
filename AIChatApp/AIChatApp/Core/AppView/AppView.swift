@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct AppView: View {
-  @State private var appState: AppState = AppState()
+  @State private var appState = AppState()
 
   var body: some View {
     AppViewBuilder(
