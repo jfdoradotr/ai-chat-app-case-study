@@ -5,11 +5,12 @@
 import SwiftUI
 
 struct WelcomeView: View {
+  @State private var imageURL = Constants.randomImage
+
   var body: some View {
     VStack {
-      ImageLoaderView(url: URL(string: "https://picsum.photos/600/600"))
-      .allowsHitTesting(false)
-      .ignoresSafeArea()
+      ImageLoaderView(url: imageURL)
+        .ignoresSafeArea()
 
       VStack {
         Text("Welcome!")
