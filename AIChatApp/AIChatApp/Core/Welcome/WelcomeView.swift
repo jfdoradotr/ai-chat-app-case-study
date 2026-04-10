@@ -11,45 +11,54 @@ struct WelcomeView: View {
     VStack {
       ImageLoaderView(url: imageURL)
         .ignoresSafeArea()
+      titleSection
+        .padding(.top, 24)
+      ctaButtons
+        .padding(16)
+      policyLinks
+    }
+  }
 
-      VStack(spacing: 8) {
-        Text("AI Chat 🤖")
-          .font(.largeTitle)
-          .fontWeight(.semibold)
-        Text("Website @ SwiftyJourney.com")
-          .font(.caption)
-          .foregroundStyle(.secondary)
+  private var titleSection: some View {
+    VStack(spacing: 8) {
+      Text("AI Chat 🤖")
+        .font(.largeTitle)
+        .fontWeight(.semibold)
+      Text("Website @ SwiftyJourney.com")
+        .font(.caption)
+        .foregroundStyle(.secondary)
+    }
+  }
+
+  private var ctaButtons: some View {
+    VStack(spacing: 8) {
+      NavigationLink {
+        OnboardingCompletedView()
+      } label: {
+        Text("Get Started")
       }
-      .padding(.top, 24)
+      .buttonStyle(.primary)
 
-      VStack(spacing: 8) {
-        NavigationLink {
-          OnboardingCompletedView()
-        } label: {
-          Text("Get Started")
+      Text("Already have an account? Sign in!")
+        .underline()
+        .font(.body)
+        .padding(8)
+        .tappableBackground()
+        .onTapGesture {
         }
-        .buttonStyle(.primary)
+    }
+  }
 
-        Text("Already have an account? Sign in!")
-          .underline()
-          .font(.body)
-          .padding(8)
-          .tappableBackground()
-          .onTapGesture {
-          }
+  private var policyLinks: some View {
+    HStack(spacing: 8) {
+      Link(destination: Constants.termsOfServiceURL) {
+        Text("Terms of Service")
       }
-      .padding(16)
-
-      HStack(spacing: 8) {
-        Link(destination: Constants.termsOfServiceURL) {
-          Text("Terms of Service")
-        }
-        Circle()
-          .fill(.accent)
-          .frame(width: 4, height: 4)
-        Link(destination: Constants.privacyPolicyURL) {
-          Text("Privacy Policy")
-        }
+      Circle()
+        .fill(.accent)
+        .frame(width: 4, height: 4)
+      Link(destination: Constants.privacyPolicyURL) {
+        Text("Privacy Policy")
       }
     }
   }
