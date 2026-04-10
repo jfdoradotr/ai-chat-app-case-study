@@ -11,7 +11,7 @@ struct WelcomeView: View {
         .frame(maxHeight: .infinity)
 
       NavigationLink {
-        Text("Onboarding Completed")
+        OnboardingCompletedView()
       } label: {
         Text("Get Started")
       }
