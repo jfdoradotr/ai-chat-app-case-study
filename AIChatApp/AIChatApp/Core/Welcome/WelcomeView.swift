@@ -12,28 +12,45 @@ struct WelcomeView: View {
       ImageLoaderView(url: imageURL)
         .ignoresSafeArea()
 
-      VStack {
-        VStack {
-          Text("AI Chat 🤖")
-            .font(.title)
-            .bold()
-          Text("SwiftyJourney.com")
-            .font(.caption)
-            .foregroundStyle(.secondary)
-          NavigationLink {
-            OnboardingCompletedView()
-          } label: {
-            Text("Get Started")
-          }
-          .buttonStyle(.primary)
-          Button("Already have an account? Sign in.") {
+      VStack(spacing: 8) {
+        Text("AI Chat 🤖")
+          .font(.largeTitle)
+          .fontWeight(.semibold)
+        Text("Website @ SwiftyJourney.com")
+          .font(.caption)
+          .foregroundStyle(.secondary)
+      }
+      .padding(.top, 24)
 
-          }
-          Text("Terms of Service • Privacy Policy")
+      VStack(spacing: 8) {
+        NavigationLink {
+          OnboardingCompletedView()
+        } label: {
+          Text("Get Started")
         }
-        .frame(maxHeight: .infinity)
+        .buttonStyle(.primary)
+
+        Text("Already have an account? Sign in!")
+          .underline()
+          .font(.body)
+          .padding(8)
+          .tappableBackground()
+          .onTapGesture {
+          }
       }
       .padding(16)
+
+      HStack(spacing: 8) {
+        Link(destination: Constants.termsOfServiceURL) {
+          Text("Terms of Service")
+        }
+        Circle()
+          .fill(.accent)
+          .frame(width: 4, height: 4)
+        Link(destination: Constants.privacyPolicyURL) {
+          Text("Privacy Policy")
+        }
+      }
     }
   }
 }
