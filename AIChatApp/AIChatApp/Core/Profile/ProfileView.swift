@@ -21,7 +21,7 @@ struct ProfileView: View {
   }
 
   private var settingsButton: some View {
-    Button.init(action: onSettingsButtonPressed) {
+    Button(action: onSettingsButtonPressed) {
       Label("Settings", systemImage: "gear")
     }
   }
