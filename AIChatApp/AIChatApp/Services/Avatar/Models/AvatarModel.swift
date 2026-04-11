@@ -46,3 +46,14 @@ enum CharacterAction {
 enum CharacterLocation {
   case park, mall, museum, city, desert, forest, space
 }
+
+extension [AvatarModel] {
+  static var preview: [AvatarModel] {
+    [
+      AvatarModel(avatarId: "avatar_1", name: "Alpha", characterOption: .man, characterAction: .smiling, characterLocation: .park),
+      AvatarModel(avatarId: "avatar_2", name: "Beta", characterOption: .woman, characterAction: .walking, characterLocation: .city),
+      AvatarModel(avatarId: "avatar_3", name: "Gamma", characterOption: .alien, characterAction: .eating, characterLocation: .space),
+      AvatarModel(avatarId: "avatar_4", name: "Delta", characterOption: .dog, characterAction: .sitting, characterLocation: .forest),
+    ]
+  }
+}
