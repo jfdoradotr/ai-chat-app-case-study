@@ -4,12 +4,12 @@
 
 import SwiftUI
 
-struct CarouselView<Content: View>: View {
-  @State private var selection: AvatarModel?
+struct CarouselView<Content: View, T: Hashable>: View {
+  @State private var selection: T?
 
-  var items: [AvatarModel] = .preview
+  var items: [T]
 
-  @ViewBuilder var content: (AvatarModel) -> Content
+  @ViewBuilder var content: (T) -> Content
 
   var body: some View {
     VStack(spacing: 12) {
@@ -57,7 +57,7 @@ struct CarouselView<Content: View>: View {
 }
 
 #Preview {
-  CarouselView { item in
+  CarouselView(items: [AvatarModel].preview) { item in
     HeroCellView(
       title: item.name,
       subtitle: item.characterDescription,
