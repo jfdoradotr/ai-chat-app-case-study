@@ -26,6 +26,7 @@ struct OnboardingColorView: View {
           }
         }
       )
+      .padding(.horizontal, 24)
     }
   }
 }
