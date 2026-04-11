@@ -39,9 +39,23 @@ struct OnboardingColorView: View {
       )
       .padding(.horizontal, 24)
     }
+    .safeAreaInset(edge: .bottom, alignment: .center, spacing: 16) {
+      ZStack {
+        NavigationLink {
+          OnboardingCompletedView()
+        } label: {
+          Text("Continue")
+        }
+        .buttonStyle(.primary)
+        .background(Color(uiColor: .systemBackground))
+      }
+      .padding(24)
+    }
   }
 }
 
 #Preview {
-  OnboardingColorView()
+  NavigationStack {
+    OnboardingColorView()
+  }
 }
