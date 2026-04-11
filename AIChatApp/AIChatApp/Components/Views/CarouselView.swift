@@ -33,6 +33,11 @@ struct CarouselView: View {
       .scrollTargetLayout()
       .scrollTargetBehavior(.paging)
       .scrollPosition(id: $selection)
+      .onAppear {
+        if selection == nil {
+          selection = items.first
+        }
+      }
 
       HStack(spacing: 8) {
         ForEach(items, id: \.self) { item in
