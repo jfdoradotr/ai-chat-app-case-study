@@ -35,30 +35,40 @@ struct AvatarModel {
   }
 
   var characterDescription: String {
-    AvatarDescriptionBuilder(
-      characterOption: characterOption,
-      characterAction: characterAction,
-      characterLocation: characterLocation
-    ).description
+    AvatarDescriptionBuilder(avatar: self).description
   }
 }
 
 struct AvatarDescriptionBuilder {
-  let characterOption: CharacterOption?
-  let characterAction: CharacterAction?
-  let characterLocation: CharacterLocation?
+  let characterOption: CharacterOption
+  let characterAction: CharacterAction
+  let characterLocation: CharacterLocation
+
+  init(characterOption: CharacterOption, characterAction: CharacterAction, characterLocation: CharacterLocation) {
+    self.characterOption = characterOption
+    self.characterAction = characterAction
+    self.characterLocation = characterLocation
+  }
+
+  init(avatar: AvatarModel) {
+    self.characterOption = avatar.characterOption ?? .default
+    self.characterAction = avatar.characterAction ?? .default
+    self.characterLocation = avatar.characterLocation ?? .default
+  }
 
   var description: String {
-    let article = characterOption?.startsWithVowelSound == true ? "An" : "A"
-    let option = characterOption?.displayName ?? "character"
-    let action = characterAction?.displayName ?? "hanging out"
-    let location = characterLocation?.displayName ?? "somewhere"
+    let article = characterOption.startsWithVowelSound == true ? "An" : "A"
+    let option = characterOption.displayName
+    let action = characterAction.displayName
+    let location = characterLocation.displayName
     return "\(article) \(option) that is \(action) in \(location)"
   }
 }
 
 enum CharacterOption {
   case man, woman, alien, dog, cat
+
+  static var `default`: Self { .man }
 
   var startsWithVowelSound: Bool {
     switch self {
@@ -81,6 +91,8 @@ enum CharacterOption {
 enum CharacterAction {
   case smiling, sitting, eating, drinking, walking, shopping, studying, working, relaxing, fighting, crying
 
+  static var `default`: Self { .smiling }
+
   var displayName: String {
     switch self {
     case .smiling: return "smiling"
@@ -100,6 +112,8 @@ enum CharacterAction {
 
 enum CharacterLocation {
   case park, mall, museum, city, desert, forest, space
+
+  static var `default`: Self { .park }
 
   var displayName: String {
     switch self {
