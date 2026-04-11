@@ -29,6 +29,7 @@ struct OnboardingColorView: View {
                 .onTapGesture {
                   selectedColor = color
                 }
+                .animation(.smooth, value: selectedColor)
             }
           } header: {
             Text("Select a profile color")
