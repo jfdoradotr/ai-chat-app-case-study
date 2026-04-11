@@ -30,7 +30,8 @@ struct OnboardingCompletedView: View {
     .safeAreaInset(edge: .bottom, content: {
       ctaButton
     })
-    .padding(16)
+    .padding(24)
+    .navigationBarBackButtonHidden(true)
   }
 
   private var ctaButton: some View {
