@@ -4,27 +4,25 @@
 
 import SwiftUI
 
-struct CarouselView: View {
+struct CarouselView<Content: View>: View {
   @State private var selection: AvatarModel?
 
   var items: [AvatarModel] = .preview
+
+  @ViewBuilder var content: (AvatarModel) -> Content
 
   var body: some View {
     VStack(spacing: 12) {
       ScrollView(.horizontal) {
         LazyHStack(spacing: 0) {
           ForEach(items, id: \.self) { item in
-            HeroCellView(
-              title: item.name,
-              subtitle: item.characterDescription,
-              imageUrl: item.profileImageUrl
-            )
-            .scrollTransition(.interactive.threshold(.visible(0.95)), transition: { content, phase in
-              content
-                .scaleEffect(phase.isIdentity ? 1 : 0.9)
-            })
-            .containerRelativeFrame(.horizontal, alignment: .center)
-            .id(item)
+            content(item)
+              .scrollTransition(.interactive.threshold(.visible(0.95)), transition: { content, phase in
+                content
+                  .scaleEffect(phase.isIdentity ? 1 : 0.9)
+              })
+              .containerRelativeFrame(.horizontal, alignment: .center)
+              .id(item)
           }
         }
       }
@@ -59,6 +57,12 @@ struct CarouselView: View {
 }
 
 #Preview {
-  CarouselView()
-    .padding()
+  CarouselView { item in
+    HeroCellView(
+      title: item.name,
+      subtitle: item.characterDescription,
+      imageUrl: item.profileImageUrl
+    )
+  }
+  .padding()
 }
