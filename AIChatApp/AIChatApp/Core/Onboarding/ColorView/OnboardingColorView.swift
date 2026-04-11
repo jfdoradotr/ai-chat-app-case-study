@@ -25,6 +25,7 @@ struct OnboardingColorView: View {
       .background(Color(uiColor: .systemBackground))
     }
     .animation(.bouncy, value: selectedColor)
+    .navigationBarBackButtonHidden(true)
   }
 
   private var colorGrid: some View {
@@ -57,7 +58,7 @@ struct OnboardingColorView: View {
 
   private var ctaButton: some View {
     NavigationLink {
-      OnboardingCompletedView()
+      OnboardingCompletedView(selectedColor: selectedColor)
     } label: {
       Text("Continue")
     }
