@@ -29,7 +29,6 @@ struct OnboardingColorView: View {
                 .onTapGesture {
                   selectedColor = color
                 }
-                .animation(.smooth, value: selectedColor)
             }
           } header: {
             Text("Select a profile color")
@@ -41,16 +40,20 @@ struct OnboardingColorView: View {
     }
     .safeAreaInset(edge: .bottom, alignment: .center, spacing: 16) {
       ZStack {
-        NavigationLink {
-          OnboardingCompletedView()
-        } label: {
-          Text("Continue")
+        if let selectedColor {
+          NavigationLink {
+            OnboardingCompletedView()
+          } label: {
+            Text("Continue")
+          }
+          .buttonStyle(.primary)
+          .transition(AnyTransition.move(edge: .bottom))
         }
-        .buttonStyle(.primary)
-        .background(Color(uiColor: .systemBackground))
       }
       .padding(24)
+      .background(Color(uiColor: .systemBackground))
     }
+    .animation(.bouncy, value: selectedColor)
   }
 }
 
