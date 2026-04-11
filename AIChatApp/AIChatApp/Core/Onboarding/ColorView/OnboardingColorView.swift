@@ -57,7 +57,7 @@ struct OnboardingColorView: View {
 
   private var ctaButton: some View {
     NavigationLink {
-      OnboardingCompletedView()
+      OnboardingCompletedView(selectedColor: selectedColor)
     } label: {
       Text("Continue")
     }
