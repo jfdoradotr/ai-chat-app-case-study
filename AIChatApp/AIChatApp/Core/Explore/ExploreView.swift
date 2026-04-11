@@ -5,9 +5,16 @@
 import SwiftUI
 
 struct ExploreView: View {
+  let avatar = AvatarModel.preview
+
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-      .navigationTitle("Explore")
+    HeroCellView(
+      title: avatar.name,
+      subtitle: avatar.name,
+      imageUrl: avatar.profileImageUrl
+    )
+    .frame(height: 200)
+    .navigationTitle("Explore")
   }
 }
 
