@@ -47,6 +47,7 @@ struct OnboardingCompletedView: View {
       }
     }
     .buttonStyle(.primary)
+    .disabled(isCompletingProfileSetup)
   }
 
   private func onFinishButtonPressed() {
