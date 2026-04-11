@@ -10,7 +10,7 @@ struct CarouselView: View {
       LazyHStack {
         ForEach(0..<5) { index in
           Rectangle()
-            .frame(width: 300)
+            .fill(index % 2 == 0 ? Color.red : Color.blue)
             .containerRelativeFrame(.horizontal, alignment: .center)
         }
       }
