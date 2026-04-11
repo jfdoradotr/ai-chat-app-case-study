@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct CarouselView: View {
+  @State private var selection: AvatarModel?
+
   var items: [AvatarModel] = .preview
 
   var body: some View {
@@ -22,6 +24,7 @@ struct CarouselView: View {
                 .scaleEffect(phase.isIdentity ? 1 : 0.9)
             })
             .containerRelativeFrame(.horizontal, alignment: .center)
+            .id(item)
           }
         }
       }
@@ -29,11 +32,12 @@ struct CarouselView: View {
       .scrollIndicators(.hidden)
       .scrollTargetLayout()
       .scrollTargetBehavior(.paging)
+      .scrollPosition(id: $selection)
 
       HStack(spacing: 8) {
-        ForEach(items, id: \.self) { _ in
+        ForEach(items, id: \.self) { item in
           Circle()
-            .fill(.accent)
+            .fill(item == selection ? .accent : .secondary)
             .frame(width: 8, height: 8)
         }
       }
