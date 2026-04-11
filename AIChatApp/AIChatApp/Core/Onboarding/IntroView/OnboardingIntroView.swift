@@ -27,7 +27,7 @@ struct OnboardingIntroView: View {
       .padding(24)
 
       NavigationLink {
-        OnboardingCompletedView()
+        OnboardingColorView()
       } label: {
         Text("Continue")
       }
@@ -39,5 +39,7 @@ struct OnboardingIntroView: View {
 }
 
 #Preview {
-  OnboardingIntroView()
+  NavigationStack {
+    OnboardingIntroView()
+  }
 }
