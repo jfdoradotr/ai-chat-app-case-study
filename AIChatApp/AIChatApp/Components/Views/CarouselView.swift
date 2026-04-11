@@ -9,13 +9,17 @@ struct CarouselView: View {
 
   var body: some View {
     ScrollView(.horizontal) {
-      LazyHStack {
+      LazyHStack(spacing: 0) {
         ForEach(items, id: \.self) { item in
           HeroCellView(
             title: item.name,
             subtitle: item.characterDescription,
             imageUrl: item.profileImageUrl
           )
+          .scrollTransition(.interactive.threshold(.visible(0.95)), transition: { content, phase in
+            content
+              .scaleEffect(phase.isIdentity ? 1 : 0.9)
+          })
           .containerRelativeFrame(.horizontal, alignment: .center)
         }
       }
@@ -29,4 +33,5 @@ struct CarouselView: View {
 
 #Preview {
   CarouselView()
+    .padding()
 }
