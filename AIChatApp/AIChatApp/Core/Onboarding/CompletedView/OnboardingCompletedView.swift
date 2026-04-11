@@ -7,12 +7,18 @@ import SwiftUI
 struct OnboardingCompletedView: View {
   @Environment(AppState.self) private var appState
 
+  private let selectedColor: Color
+
+  init(selectedColor: Color) {
+    self.selectedColor = selectedColor
+  }
+
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       Text("Setup complete!")
         .font(.largeTitle)
         .fontWeight(.semibold)
-        .foregroundStyle(.accent)
+        .foregroundStyle(selectedColor)
       Text("We've set up your profile and you're ready to start chatting.")
         .font(.title)
         .fontWeight(.medium)
@@ -33,6 +39,6 @@ struct OnboardingCompletedView: View {
 }
 
 #Preview {
-  OnboardingCompletedView()
+  OnboardingCompletedView(selectedColor: .orange)
     .environment(AppState())
 }
