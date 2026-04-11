@@ -5,13 +5,18 @@
 import SwiftUI
 
 struct CarouselView: View {
+  var items: [AvatarModel] = .preview
+
   var body: some View {
     ScrollView(.horizontal) {
       LazyHStack {
-        ForEach(0..<5) { index in
-          Rectangle()
-            .fill(index % 2 == 0 ? Color.red : Color.blue)
-            .containerRelativeFrame(.horizontal, alignment: .center)
+        ForEach(items, id: \.self) { item in
+          HeroCellView(
+            title: item.name,
+            subtitle: item.characterDescription,
+            imageUrl: item.profileImageUrl
+          )
+          .containerRelativeFrame(.horizontal, alignment: .center)
         }
       }
     }
