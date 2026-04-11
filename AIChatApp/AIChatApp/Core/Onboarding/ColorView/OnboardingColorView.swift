@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct OnboardingColorView: View {
+  private let profileColors: [Color] = [.red, .green, .orange, .blue, .mint, .purple, .cyan, .teal, .indigo]
+
   var body: some View {
     ScrollView {
       LazyVGrid(
@@ -14,8 +16,9 @@ struct OnboardingColorView: View {
         pinnedViews: [.sectionHeaders],
         content: {
           Section {
-            ForEach(0..<20) { index in
+            ForEach(profileColors, id: \.self) { color in
               Circle()
+                .fill(color)
             }
           } header: {
             Text("Select a profile color")
