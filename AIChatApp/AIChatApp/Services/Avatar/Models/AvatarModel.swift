@@ -47,6 +47,8 @@ enum CharacterLocation {
   case park, mall, museum, city, desert, forest, space
 }
 
+// MARK: - Mocks
+
 extension [AvatarModel] {
   static var preview: [AvatarModel] {
     [
@@ -55,5 +57,11 @@ extension [AvatarModel] {
       AvatarModel(avatarId: "avatar_3", name: "Gamma", characterOption: .alien, characterAction: .eating, characterLocation: .space),
       AvatarModel(avatarId: "avatar_4", name: "Delta", characterOption: .dog, characterAction: .sitting, characterLocation: .forest),
     ]
+  }
+}
+
+extension AvatarModel {
+  static var preview: AvatarModel {
+    [AvatarModel].preview[0]
   }
 }
